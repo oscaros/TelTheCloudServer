@@ -1,0 +1,10 @@
+{
+	"description" : "Spectrum SMS Test Client",
+	"name" : "Spectrum SMS Test Client",
+	"license": "MIT",
+	"require": {
+		"php": ">=5.2.4",
+		"phpseclib/phpseclib": "^2.0"
+	}
+		
+}
