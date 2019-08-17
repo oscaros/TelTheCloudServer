@@ -60,7 +60,7 @@ class User_model extends CI_Model
     {
         $this->db->select('roleId, role');
         $this->db->from('tbl_roles');
-        $this->db->where('roleId !=', 1);
+        $this->db->where('roleId !=', 0);
         $query = $this->db->get();
         
         return $query->result();
@@ -120,23 +120,6 @@ class User_model extends CI_Model
         return $query->result();
     }
     
-
-     /**
-     * This function used to get user pic from database
-     * @param number $userId : This is user id
-     * @return array $result : This is user information
-     */
-    function getUserProfilePic($userId)
-    {
-        $this->db->select('userId, profile_pic');
-        $this->db->from('tbl_users');
-        $this->db->where('isDeleted', 0);
-		$this->db->where('roleId =', 1);
-        $this->db->where('userId', $userId);
-        $query = $this->db->get();
-        
-        return $query->result();
-    }
     
     /**
      * This function is used to update the user information
@@ -205,109 +188,44 @@ class User_model extends CI_Model
         return $this->db->affected_rows();
     }
 
-    function getTopBuyinStationData(){
-        $this->db->select('buying_station.bs_name,
-        SUM(purchases.qty_organic) AS total_organic,
-        SUM(purchases.qty_other) AS total_other');
-        $this->db->from('purchases');
-        $this->db->join('buying_station','purchases.bs_id = buying_station.bs_id');
-        //$this->db->where('p.farmer_id =', $farmerId); 
-        $this->db->where('purchases.added_on >','2017-12-31');
-        $this->db->where('purchases.added_on <','NOW()');  
-        $this->db->group_by('buying_station.bs_name');
-        $this->db->limit(10);
-        //$this->db->order_by('m.month_id'); 
-        $query = $this->db->get(); 
-               
-        return $query->result(); 
-    }
+    function getTop10users(){
 
-    function getPurchaseTrendData(){
-        $this->db->select('months.short_form,
-        SUM(purchases.qty_organic) AS qty_organic,
-        SUM(purchases.qty_other) AS qty_other');
-        $this->db->from('purchases');
-        $this->db->join('months','purchases.month_id = months.month_id');
-        //$this->db->where('p.farmer_id =', $farmerId); 
-        $this->db->where('purchases.added_on >','2017-12-31');
-        $this->db->where('purchases.added_on <','NOW()');  
-        $this->db->group_by('months.month_id');
-        //$this->db->limit(10);
-        $this->db->order_by('months.month_id'); 
-        $query = $this->db->get(); 
-               
-        return $query->result(); 
+        $this->db->select('tbl_users.name,
+        COUNT(contacts.userId) AS total_saved');
+        $this->db->from('contacts');
+        $this->db->join('tbl_users','contacts.userId = tbl_users.userId');
         
-    }
-
-    function getTopFarmingSubsData(){
-        $this->db->select('SUM(purchases.qty_organic) AS qty_organic,
-        SUM(purchases.qty_other) AS qty_other,
-        subcounties.subcounty_name');
-        $this->db->from('purchases');
-        $this->db->join('months','purchases.month_id = months.month_id');
-        $this->db->join('subcounties','purchases.subcounty_id = subcounties.subcounty_id');
-        //$this->db->where('p.farmer_id =', $farmerId); 
-        $this->db->where('purchases.added_on >','2017-12-31');
-        $this->db->where('purchases.added_on <','NOW()');  
-        $this->db->group_by('subcounties.subcounty_name');
-        //$this->db->limit(10);
+        //$this->db->where('contacts.date_added >','2018-12-31');
+        //$this->db->where('contacts.date_added <','NOW()');  
+        $this->db->group_by('tbl_users.name');
+        $this->db->limit(10);
         //$this->db->order_by('m.month_id'); 
         $query = $this->db->get(); 
                
         return $query->result(); 
     }
 
-    function getPieChartTopSubsData(){
-        $this->db->select('SUM(purchases.qty_organic) AS qty_organic,
-        SUM(purchases.qty_other) AS qty_other,
-        subcounties.subcounty_name');
-        $this->db->from('purchases');
-        $this->db->join('subcounties','purchases.subcounty_id = subcounties.subcounty_id');
-        //$this->db->where('p.farmer_id =', $farmerId); 
-        $this->db->where('purchases.added_on >','2017-12-31');
-        $this->db->where('purchases.added_on <','NOW()');  
-        $this->db->group_by('subcounties.subcounty_name');
-        $this->db->limit(10);
-        $query = $this->db->get(); 
-               
-        return $query->result(); 
-    }
-
-    function getTotalPurchases(){
-        $this->db->select('COUNT(*) AS purchases');
-        $this->db->from('purchases');
-        $this->db->where('purchases.added_on >','2017-12-31');
-        $this->db->where('purchases.added_on <','NOW()');
-        $query = $this->db->get(); 
-               
-        return $query->result(); 
-    }
-
-    function getTotalFarmers(){
-        $this->db->select('COUNT(*) AS farmers');
-        $this->db->from('farmers');
-        $this->db->where('farmers.added_on >','2017-12-31');
+    function getTotalContacts(){
+       $this->db->select('COUNT(*) AS contacts');
+        $this->db->from('contacts');
+        //$this->db->where('contacts.added_on >','2017-12-31');
+        //$this->db->where('contacts.added_on <','NOW()');
         $query = $this->db->get(); 
                
         return $query->result();
     }
 
-    function getTotalBuyingStations(){
-        $this->db->select('COUNT(*) AS buyingStations');
-        $this->db->from('buying_station');
+    function getTotalUsers(){
+        $this->db->select('COUNT(*) AS users');
+        $this->db->from('tbl_users');
+        //$this->db->where('users.added_on >','2017-12-31');
         $query = $this->db->get(); 
                
         return $query->result();
     }
 
-    function getTotalHectare(){
-        $this->db->select('SUM(farmer_detail.total_farm_size) AS totalHectare');
-        $this->db->from('farmer_detail');
-        $query = $this->db->get(); 
-               
-        return $query->result();
-    }
+
+   
 }
 
   

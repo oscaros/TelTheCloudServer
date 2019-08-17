@@ -17,7 +17,7 @@
 |
 */
 //$base  = "http://".$_SERVER['HTTP_HOST'];
-$base  = "http://icamuganda.com/";
+$base  = "http://localhost:8180";
 $base .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
 $config['base_url'] = $base;
 

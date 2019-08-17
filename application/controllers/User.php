@@ -26,16 +26,11 @@ class User extends BaseController
      */
     public function index()
     {
-        $this->global['pageTitle'] = 'ICAM : Dashboard';  
-        $data['topBuyinStations'] = $this->user_model->getTopBuyinStationData();
-        $data['purchaseTrend'] = $this->user_model->getPurchaseTrendData();
-        $data['topFarmingSubs'] = $this->user_model->getTopFarmingSubsData();
-        $data['piechartTopSubs'] = $this->user_model->getPieChartTopSubsData();
+        $this->global['pageTitle'] = 'TelTheCloud : Dashboard';  
+        $data['getTop10users'] = $this->user_model->getTop10users();
         
-        $data['totalPurchases'] = $this->user_model->getTotalPurchases();
-        $data['totalFarmers'] = $this->user_model->getTotalFarmers();
-        $data['totalBuyingStations'] = $this->user_model->getTotalBuyingStations();
-        $data['totalHectare'] = $this->user_model->getTotalHectare();
+        $data['totalContacts'] = $this->user_model->getTotalContacts();
+        $data['total_users'] = $this->user_model->getTotalUsers();
         $this->loadViews("dashboard", $this->global, $data , NULL);
     }
 

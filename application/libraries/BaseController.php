@@ -61,10 +61,8 @@ class BaseController extends CI_Controller {
 	/**
 	 * This function is used to check the access
 	 */
-	function isAbleToAccessBuyingStations() {
-		if ($this->role != ROLE_ADMIN and $this->role != ROLE_MANAGER and $this->role != ROLE_EMPLOYEE and $this->role != ROLE_ACOUNTANT and 
-		$this->role != ROLE_AGRICULTURAL_OFFICER and $this->role != ROLE_PURCHASES_AGENT and 
-		$this->role != ROLE_FARM_INSPECTOR and $this->role != ROLE_DATA_ENTRANT) {
+	function isAbleToAccessContacts() {
+		if ($this->role != ROLE_ADMIN and $this->role != ROLE_MANAGER) {
 			return true;
 		} else {
 			return false;

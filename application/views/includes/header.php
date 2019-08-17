@@ -51,16 +51,16 @@
     <![endif]-->
   </head>
   <!-- <body class="sidebar-mini skin-black-light"> -->
-  <body class="skin-blue sidebar-mini">
+  <body class="skin-green sidebar-mini">
     <div class="wrapper">
       
       <header class="main-header">
         <!-- Logo -->
         <a href="<?php echo base_url(); ?>" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>IC</b>AM</span>
+          <span class="logo-mini"><b>CLOUD</b>+</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>ICAM</b>ADMIN</span>
+          <span class="logo-lg"><b>TelThe</b>Cloud</span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -137,71 +137,20 @@
               </a>
             </li>
             <li class="treeview">
-              <a href="<?php echo base_url(); ?>Buying_station" >
-                <i class="fa fa-truck"></i>
-                <span>Buying Stations</span>
+              <a href="<?php echo base_url(); ?>contactListing" >
+                <i class="fa fa-phone"></i>
+                <span>Contact Management</span>
               </a>
             </li>            
-            <?php
-            if($role == ROLE_ADMIN || $role == ROLE_MANAGER || $role == ROLE_FARM_INSPECTOR || $role == ROLE_DATA_ENTRANT)
-            {
-            ?>
+          
             <li class="treeview">
-              <a href="<?php echo base_url(); ?>farmers" >
+              <a href="<?php echo base_url(); ?>users" >
                 <i class="fa fa-users"></i>
-                <span>Farmers</span>
+                <span>User Management</span>
               </a>
             </li>
-            <li class="treeview">
-              <a href="<?php echo base_url(); ?>inspection" >
-                <i class="fa fa-search"></i>
-                <span>Inspection</span>
-              </a>
-            </li>
-           <?php
-            }
-            if($role == ROLE_ADMIN || $role == ROLE_MANAGER || $role == ROLE_AGRICULTURAL_OFFICER )
-            {
-            ?>
-            <li class="treeview">
-              <a href="<?php echo base_url(); ?>userListing">
-                <i class="fa fa-users"></i>
-                <span>Users</span>
-              </a>
-            </li>
-           <li class="treeview">
-              <a href="<?php echo base_url(); ?>allocationsListing">
-                <i class="fa fa-graduation-cap"></i>
-                <span>Schedules</span>
-              </a>
-            </li> 
             
-            <?php
-            }
-            if($role == ROLE_ADMIN || $role == ROLE_MANAGER || $role == ROLE_PURCHASES_AGENT || $role == ROLE_ACOUNTANT || $role == ROLE_DATA_ENTRANT || $role == ROLE_AGRICULTURAL_OFFICER)
-            {
-            ?>
-            <li class="treeview">
-              <a href="<?php echo base_url(); ?>purchaseListing" >
-                <i class="fa fa-shopping-cart"></i>
-                <span>Purchases</span>
-              </a>
-            </li>
-            <li class="treeview">
-              <a href="<?php echo base_url(); ?>advances" >
-                <i class="fa fa-money"></i>
-                <span>Advances</span>
-              </a>
-            </li>
-            <?php
-            }
-            ?>
-            <li class="treeview">
-              <a href="<?php echo base_url(); ?>notification" >
-                <i class="fa fa-bell"></i>
-                <span>SMS</span>
-              </a>
-            </li>
+                  
           </ul>
         </section>
         <!-- /.sidebar -->

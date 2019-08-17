@@ -70,11 +70,15 @@ $route['createPasswordUser'] = "login/createPasswordUser";
 
 
 // therefore stations is any route nane and buying ststion is the name of the main class got the controller inchardge
-$route['stations'] = "buying_station";
-$route['Buying_station'] = 'Buying_station/stationListing';
-$route['addNewStation'] = "Buying_station/addNewStation";
+//$route['contacts'] = "Contact_mgt";
+$route['contactListing'] = 'contact_mgt/contactListing';
+$route['contactListing/(:num)'] = "contact_mgt/contactListing/$1";
 
-$route['addNewBuyingStation'] = "Buying_station/addNewBuyingStation";
+// route to all farmers display
+$route['users'] = "user/userListing";
+$route['farmersListing/(:num)'] = "farmers/farmersListing/$1";
+
+
 
 $route['editOldBuyingStation'] = "Buying_station/editOldBuyingStation";
 // route to display details of a particular buying station
