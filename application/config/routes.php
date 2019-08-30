@@ -76,49 +76,7 @@ $route['contactListing/(:num)'] = "contact_mgt/contactListing/$1";
 
 // route to all farmers display
 $route['users'] = "user/userListing";
-$route['farmersListing/(:num)'] = "farmers/farmersListing/$1";
 
-
-
-$route['editOldBuyingStation'] = "Buying_station/editOldBuyingStation";
-// route to display details of a particular buying station
-$route['editOldBuyingStation/(:num)'] = "Buying_station/editOldBuyingStation/$1";
-// route to edit buying station function
-$route['editStation'] = "Buying_station/editStation";
-// route to display list of all buying stations after performing an edit
-$route['stationListing'] = 'Buying_station/stationListing';
-$route['stationListing/(:num)'] = "Buying_station/stationListing/$1";
-
-// route to all farmers display
-$route['farmers'] = "farmers/farmersListing";
-$route['farmersListing/(:num)'] = "farmers/farmersListing/$1";
-// route to add new farmer
-$route['addNewFarmer'] = "farmers/addNewfarmer";
-$route['addNewIcamFarmer'] = "farmers/addNewIcamFarmer";
-// route to edit farmers by id
-$route['editOldfarmers/(:num)'] = "farmers/editOldfarmers/$1";
-$route['editFarmer'] = "farmers/editFarmer";
-// route to view details of a selected farmer
-$route['viewSelectfarmer'] = "Farmers/viewAfarmer";
-$route['viewSelectfarmer/(:num)'] = "farmers/viewAfarmer/$1";
-
-$route['inspection'] = "inspection/inspection";
-// route to add new inspection
-$route['addNewInspection'] = "inspection/addNewInspection";
-
-// route to display all purchases
-$route['purchaseListing'] = "purchases/purchaseListing";
-$route['purchaseListing/(:num)'] = "purchases/purchaseListing/$1";
-// rote to add new purchase
-$route['addNewPurchase'] = "purchases/addNewPurchase";
-$route['addNewCocoaPurchase'] = "purchases/addNewCocoaPurchase";
-$route['editOldPurchase/(:num)'] = "purchases/editOldPurchase/$1";
-// route to edit purchase function
-$route['editPurchase'] = "purchases/editPurchase";
-$route['payFarmer'] = 'purchases/payFarmer';
-$route['payIcamFarmer/(:num)'] = 'purchases/payIcamFarmer/$1';
-
-$route['notification'] = "notification";
 
 //routes for advances
 $route['advances'] = "advances/advanceListing";
@@ -127,12 +85,30 @@ $route['addNewAdvance'] = "advances/addNewAdvance";
 $route['addNewCocoaAdvance'] = "advances/addNewCocoaAdvance";
 $route['viewSelectAdvance/(:num)'] = "advances/viewSelectAdvance/$1";
 
-//routes for allocations
-$route['allocationsListing'] = "allocations/allocationsListing";
-$route['addNewPurchaser'] = "allocations/addNewPurchaser";
-$route['addNewSchedule'] = "allocations/addNewSchedule";
-$route['addNewCocoaPurchaser'] = 'allocations/addNewCocoaPurchaser';
-$route['addNewPurchaserSchedule'] = 'allocations/addNewPurchaserSchedule';
+
+$route['api'] = 'api/users/';
+$route['user'] = 'api/users/';
+//api/users
+$route['api/users'] = 'api/users/users/';
+$route['api/users/format/json'] = 'api/users/users/format/json';
+$route['api/users/format/xml'] = 'api/users/users/format/xml';
+$route['api/users/format/html'] = 'api/users/users/format/html';
+$route['api/users/format/csv'] = 'api/users/users/format/csv';
+$route['api/users.json'] = 'api/users/users.json';
+$route['api/users.xml'] = 'api/users/users.xml';
+$route['api/users.html'] = 'api/users/users.html';
+$route['api/users.csv'] = 'api/users/users.csv';
+//api/users/1
+$route['api/users/id/(:num)'] = 'api/users/users/id/$1';
+//$route['api/users/id/(:any)'] = 'api/users/users/id/$1';
+$route['api/users/id/(:num)/format/json'] = 'api/users/users/id/$1/format/json';
+$route['api/users/id/(:num)/format/xml'] = 'api/users/users/id/$1/format/xml';
+$route['api/users/id/(:num)/format/html'] = 'api/users/users/id/$1/format/html';
+$route['api/users/id/(:num)/format/csv'] = 'api/users/users/id/$1/format/csv';
+$route['api/users/id/(:num).json'] = 'api/users/users/id/$1.json';
+$route['api/users/id/(:num).xml'] = 'api/users/users/id/$1.xml';
+$route['api/users/id/(:num).html'] = 'api/users/users/id/$1.html';
+$route['api/users/id/(:num).csv'] = 'api/users/users/id/$1.csv';
 
 
 
